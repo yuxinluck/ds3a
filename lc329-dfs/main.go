@@ -36,13 +36,13 @@ func longestIncreasingPath(matrix [][]int) int {
 	// 	visited = append(visited, make([]bool, n))
 	// }
 
-	var dfs func(i, j int)
-	dfs = func(i, j int) {
+	var dfs func(i, j int) int
+	dfs = func(i, j int) int {
 		// if visited[i][j] {
 		// 	return
 		// }
 		if depth[i][j] != -1 {
-			return
+			return depth[i][j]
 		}
 		// ismax := true
 		// for d := 0; d < 4; d++ {
@@ -61,7 +61,7 @@ func longestIncreasingPath(matrix [][]int) int {
 		// 	return
 		// }
 
-		dep := 1
+		depth[i][j] = 1
 		for d := 0; d < 4; d++ {
 			nx := i + dx[d]
 			ny := j + dy[d]
@@ -69,25 +69,16 @@ func longestIncreasingPath(matrix [][]int) int {
 				continue
 			}
 			if matrix[nx][ny] > matrix[i][j] {
-				if depth[nx][ny] != -1 {
-					dep = Max(depth[nx][ny]+1, dep)
-				}
-				if depth[nx][ny] == -1 {
-					dfs(nx, ny)
-					dep = Max(depth[nx][ny]+1, dep)
-				}
+				depth[i][j] = Max(dfs(nx, ny)+1, depth[i][j])
 			}
 		}
-		depth[i][j] = dep
-		ans = Max(dep, ans)
-		// fmt.Println(ans, dep)
+
+		return depth[i][j]
 	}
 
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
-			if depth[i][j] == -1 {
-				dfs(i, j)
-			}
+			ans = Max(dfs(i, j), ans)
 		}
 	}
 
