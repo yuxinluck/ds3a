@@ -21,6 +21,7 @@ func findRedundantConnection(edges [][]int) []int {
 	//记录是否已经访问
 	visited := make([]bool, n+1)
 	hasCycle := false
+	
 	var dfs func(x int, fa int)
 	dfs = func(x, fa int) {
 		visited[x] = true

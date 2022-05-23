@@ -1,3 +1,3 @@
-module lc200-bfs
+module lc200-dfs
 
 go 1.17
