@@ -14,7 +14,7 @@ https://leetcode.cn/problems/maximum-subarray/
 最大子序和
 
 
-求 sum(l,r) = s[i] - s[l-1] 的最大值，固定 i, 即求 s[l-1]最小
+求 sum(l,r) = s[r] - s[l-1] 的最大值，固定 i, 即求 s[l-1]最小
 */
 
 func maxSubArray(nums []int) int {
