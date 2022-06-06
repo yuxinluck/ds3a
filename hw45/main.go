@@ -32,7 +32,7 @@ func main() {
 			}
 		}
 	}
-    json.u
+
 	if len(ans) == 0 {
 		fmt.Println(0)
 	} else {
