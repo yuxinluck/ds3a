@@ -77,7 +77,7 @@ func Permutation(nums []int) int {
 	}
 	choice(nums, temp, selected)
 
-	fmt.Println(ans)
+	// fmt.Println(ans)
 	// fmt.Println(ans[k-1])
 	s := ""
 	for i := 0; i < n; i++ {
